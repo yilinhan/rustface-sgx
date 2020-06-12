@@ -16,6 +16,7 @@
 // You should have received a copy of the BSD 2-Clause License along with the software.
 // If not, see < https://opensource.org/licenses/BSD-2-Clause>.
 
+use std::prelude::v1::*;
 mod lab_boosted_classifier;
 mod surf_mlp_classifier;
 

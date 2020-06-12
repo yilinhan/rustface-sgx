@@ -16,13 +16,13 @@
 // You should have received a copy of the BSD 2-Clause License along with the software.
 // If not, see < https://opensource.org/licenses/BSD-2-Clause>.
 
+use std::prelude::v1::*;
 use common::{Rectangle, Seq};
 use feat::FeatureMap;
 use math;
 
 use std::ptr;
 
-use rayon::prelude::*;
 
 pub struct SurfMlpFeatureMap {
     roi: Option<Rectangle>,
@@ -145,8 +145,8 @@ impl SurfMlpFeatureMap {
 
             let step = self.width as usize;
             self.img_buf
-                .par_chunks(step)
-                .zip(self.grad_y[step..].par_chunks_mut(step))
+                .chunks(step)
+                .zip(self.grad_y[step..].chunks_mut(step))
                 .for_each(|(inputs, outputs)| {
                     let src = inputs.as_ptr();
                     let dest = outputs.as_mut_ptr();

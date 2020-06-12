@@ -16,9 +16,17 @@
 // You should have received a copy of the BSD 2-Clause License along with the software.
 // If not, see < https://opensource.org/licenses/BSD-2-Clause>.
 
+#![cfg_attr(all(feature = "mesalock_sgx",
+                not(target_env = "sgx")), no_std)]
+#![cfg_attr(all(target_env = "sgx", target_vendor = "mesalock"),
+            feature(rustc_private))]
+#[cfg(all(feature = "mesalock_sgx", not(target_env = "sgx")))]
+#[macro_use]
+extern crate sgx_tstd as std;
+use std::prelude::v1::*;
+
 extern crate byteorder;
 extern crate num;
-extern crate rayon;
 
 mod classifier;
 mod common;
@@ -29,16 +37,17 @@ pub mod model;
 
 pub use common::FaceInfo;
 pub use common::ImageData;
-pub use model::{load_model, read_model, Model};
+// pub use model::{load_model, read_model, Model};
+pub use model::{read_model, Model};
 
 use detector::FuStDetector;
 use std::io;
 
 /// Create a face detector, based on a file with model description.
-pub fn create_detector(path_to_model: &str) -> Result<Box<Detector>, io::Error> {
-    let model = load_model(path_to_model)?;
-    Ok(create_detector_with_model(model))
-}
+// pub fn create_detector(path_to_model: &str) -> Result<Box<Detector>, io::Error> {
+//     let model = load_model(path_to_model)?;
+//     Ok(create_detector_with_model(model))
+// }
 
 /// Create a face detector, based on the provided model.
 pub fn create_detector_with_model(model: Model) -> Box<Detector> {

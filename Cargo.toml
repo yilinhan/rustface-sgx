@@ -12,19 +12,25 @@ exclude = [
     "assets/*",
 ]
 
+[features]
+default = ["mesalock_sgx"]
+mesalock_sgx = [
+  "sgx_tstd",
+]
+
 [dependencies]
-num = "0.2.0"
-byteorder = "1.2.6"
-rayon = "1.0.2"
+num = { git = "https://github.com/mesalock-linux/num-sgx" }
+byteorder = { git = "https://github.com/mesalock-linux/byteorder-sgx" }
+sgx_tstd = { git = "https://github.com/apache/teaclave-sgx-sdk", rev = "v1.1.2", optional = true }
 
-[dev-dependencies]
-image = "0.21.0"
-imageproc = "0.18.0"
-criterion = "0.2.4"
+# [dev-dependencies]
+# image = "0.21.0"
+# imageproc = "0.18.0"
+# criterion = "0.2.4"
 
-[[bench]]
-name = "benchmarks"
-harness = false
+# [[bench]]
+# name = "benchmarks"
+# harness = false
 
-[profile.release]
-lto = true
+# [profile.release]
+# lto = true

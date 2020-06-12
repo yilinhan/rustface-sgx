@@ -16,8 +16,9 @@
 // You should have received a copy of the BSD 2-Clause License along with the software.
 // If not, see < https://opensource.org/licenses/BSD-2-Clause>.
 
+use std::prelude::v1::*;
 use std::cell::RefCell;
-use std::fs::File;
+// use std::fs::File;
 use std::io;
 use std::io::{Cursor, Read};
 use std::rc::Rc;
@@ -64,12 +65,12 @@ impl Model {
     }
 }
 
-/// Load model from a file.
-pub fn load_model(path: &str) -> Result<Model, io::Error> {
-    let mut buf = vec![];
-    File::open(path).map(|mut file| file.read_to_end(&mut buf))??;
-    read_model(buf)
-}
+// /// Load model from a file.
+// pub fn load_model(path: &str) -> Result<Model, io::Error> {
+//     let mut buf = vec![];
+//     File::open(path).map(|mut file| file.read_to_end(&mut buf))??;
+//     read_model(buf)
+// }
 
 /// Load model from an in-memory buffer.
 pub fn read_model(buf: Vec<u8>) -> Result<Model, io::Error> {

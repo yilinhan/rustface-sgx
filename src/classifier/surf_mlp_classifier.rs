@@ -16,6 +16,7 @@
 // You should have received a copy of the BSD 2-Clause License along with the software.
 // If not, see < https://opensource.org/licenses/BSD-2-Clause>.
 
+use std::prelude::v1::*;
 use std::rc::Rc;
 
 use math;
@@ -25,8 +26,6 @@ use common::{ImageData, Rectangle};
 use feat::{FeatureMap, SurfMlpFeatureMap};
 use std::cell::RefCell;
 use std::ptr;
-
-use rayon::prelude::*;
 
 struct TwoWayBuffer {
     input: Vec<f32>,
@@ -168,7 +167,7 @@ struct Layer {
 impl Layer {
     fn compute(&self, input: &[f32], output: &mut [f32]) {
         self.weights
-            .par_chunks(self.input_dim)
+            .chunks(self.input_dim)
             .zip(&self.biases)
             .zip(output)
             .for_each(|((weights, bias), output)| {
