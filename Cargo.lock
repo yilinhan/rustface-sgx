@@ -29,14 +29,6 @@ checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 [[package]]
 name = "byteorder"
 version = "1.3.4"
-source = "git+https://github.com/mesalock-linux/byteorder-sgx?tag=sgx_1.1.3#325f392dcd294109eb05f0a3c45e4141514c7784"
-dependencies = [
- "sgx_tstd 1.1.3 (git+https://github.com/apache/teaclave-sgx-sdk.git?rev=v1.1.3)",
-]
-
-[[package]]
-name = "byteorder"
-version = "1.3.4"
 source = "git+https://github.com/mesalock-linux/byteorder-sgx#325f392dcd294109eb05f0a3c45e4141514c7784"
 dependencies = [
  "sgx_tstd 1.1.3 (git+https://github.com/apache/teaclave-sgx-sdk.git?rev=v1.1.3)",
@@ -77,7 +69,7 @@ version = "0.8.4"
 source = "git+https://github.com/mesalock-linux/deflate-rs-sgx?branch=dev#352f2d27c2b4cd816892a3c7080ab92d1877a6c4"
 dependencies = [
  "adler32",
- "byteorder 1.3.4 (git+https://github.com/mesalock-linux/byteorder-sgx)",
+ "byteorder",
  "sgx_tstd 1.1.3 (git+https://github.com/apache/teaclave-sgx-sdk.git?rev=v1.1.3)",
 ]
 
@@ -106,7 +98,7 @@ name = "image"
 version = "0.22.4"
 source = "git+https://github.com/mesalock-linux/image-sgx?tag=sgx_1.1.3#c224e120e95e6bb8976bc4bed2d36193e58c848f"
 dependencies = [
- "byteorder 1.3.4 (git+https://github.com/mesalock-linux/byteorder-sgx)",
+ "byteorder",
  "gif",
  "jpeg-decoder",
  "num-iter",
@@ -139,7 +131,7 @@ name = "jpeg-decoder"
 version = "0.1.18"
 source = "git+https://github.com/mesalock-linux/jpeg-decoder-sgx#ae0ee6d7995253c42f5e6e6cc9e6b81333bf0950"
 dependencies = [
- "byteorder 1.3.4 (git+https://github.com/mesalock-linux/byteorder-sgx)",
+ "byteorder",
  "sgx_tstd 1.1.3 (git+https://github.com/apache/teaclave-sgx-sdk.git?rev=v1.1.3)",
 ]
 
@@ -269,7 +261,7 @@ dependencies = [
 name = "rustface"
 version = "0.1.2"
 dependencies = [
- "byteorder 1.3.4 (git+https://github.com/mesalock-linux/byteorder-sgx?tag=sgx_1.1.3)",
+ "byteorder",
  "image",
  "num",
  "serde 1.0.118 (git+https://github.com/mesalock-linux/serde-sgx?tag=sgx_1.1.3)",
@@ -497,7 +489,7 @@ name = "tiff"
 version = "0.4.0"
 source = "git+https://github.com/mesalock-linux/image-tiff-sgx#f35f7661246db95861343508f94510c6b034439d"
 dependencies = [
- "byteorder 1.3.4 (git+https://github.com/mesalock-linux/byteorder-sgx)",
+ "byteorder",
  "lzw",
  "miniz_oxide",
  "sgx_tstd 1.1.3 (git+https://github.com/apache/teaclave-sgx-sdk.git?rev=v1.1.3)",
